@@ -4,7 +4,7 @@ A userbar creation package for the Unity editor (version 2019.4.3f1).  It was pr
 ![demo gif (slightly outdated)](https://cdn.discordapp.com/attachments/583710218316415009/757856258329149540/userbarTool.gif)
 
 **How to Use:** 
-1. modify the Obj_Userbar prefab and the instances of it in SampleScene as needed.  Make sure to specify a unique File Suffix for every userbar you want to export.
+1. Modify the Obj_Userbar prefab and the instances of it in SampleScene as needed.  Make sure to specify a unique File Suffix for every userbar you want to export.
 2. Play the project and resize the editor/Game view window so that all userbars you want to export are fully shown. Any that are even partially offscreen will not export correctly.
 3. Press the Enter/Return key to export the userbars. The results will be output to the Unity console.
 
