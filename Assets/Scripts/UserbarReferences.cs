@@ -10,6 +10,7 @@ public class UserbarReferences : MonoBehaviour
 	public PixelPerfectOutlinedText winnerTextComponent;
 	public PixelPerfectOutlinedText categoryTextComponent;
 	public Image imageComponent;
+	public RectTransform barTransform;
 
 
 	public void UpdateWinner(string newText)
