@@ -9,7 +9,9 @@ public class UserbarReferences : MonoBehaviour
 {
 	public PixelPerfectOutlinedText winnerTextComponent;
 	public PixelPerfectOutlinedText categoryTextComponent;
-	public Image imageComponent;
+	public Image backgroundImageComponent;
+	public Image overlayImageComponent;
+	public Image borderImageComponent;
 	public RectTransform barTransform;
 
 
@@ -21,8 +23,13 @@ public class UserbarReferences : MonoBehaviour
 	{
 		categoryTextComponent.UpdateText(newText);
 	}
-	public void UpdateBackground(Sprite newBg)
+
+	public void UpdateImageSprite(Image imgRef, Sprite newImg)
 	{
-		imageComponent.sprite = newBg;
+		imgRef.sprite = newImg;
+	}
+	public void UpdateImageTint(Image imgRef, Color newColor)
+	{
+		imgRef.color = newColor;
 	}
 }

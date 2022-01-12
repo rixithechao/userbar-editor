@@ -6,19 +6,39 @@ using UnityEngine.UI;
 
 public class Userbar : MonoBehaviour
 {
+	[Header("Basic elements")]
 	[TextArea] public string categoryText;
 	[TextArea] public string winnerText;
 	public Sprite background;
+
+	[Header("Further customization")]
+	[Space(20)]
+	public Sprite overlay;
+	public Sprite border;
+
+	public Color backgroundTint;
+	public Color overlayTint;
+	public Color borderTint;
+
+	[Header("Output")]
 	[Space(20)]
 	public string filePrefix = "output_";
 	public string fileSuffix;
-	[Space(20)]
+
+	[HideInInspector]
 	public UserbarReferences refs;
 
 
 	private string _categoryText;
 	private string _winnerText;
+
 	private Sprite _background;
+	private Sprite _overlay;
+	private Sprite _border;
+
+	private Color _backgroundTint;
+	private Color _overlayTint;
+	private Color _borderTint;
 
 
 	public void UpdateCategory(string newText)
@@ -35,22 +55,75 @@ public class Userbar : MonoBehaviour
 		refs.UpdateWinner(newText);
 	}
 
-	public void UpdateBackground(Sprite newBg)
+	public void UpdateBackground(Sprite newImg)
 	{
-		_background = newBg;
-		background = newBg;
-		refs.UpdateBackground(newBg);
+		_background = newImg;
+		background = newImg;
+		refs.UpdateImageSprite(refs.backgroundImageComponent, newImg);
 	}
+	public void UpdateOverlay(Sprite newImg)
+	{
+		_overlay = newImg;
+		overlay = newImg;
+		refs.UpdateImageSprite(refs.overlayImageComponent, newImg);
+	}
+	public void UpdateBorder(Sprite newImg)
+	{
+		_border = newImg;
+		border = newImg;
+		refs.UpdateImageSprite(refs.borderImageComponent, newImg);
+	}
+
+	public void UpdateBackgroundTint(Color newColor)
+	{
+		_backgroundTint = newColor;
+		backgroundTint = newColor;
+		refs.UpdateImageTint(refs.backgroundImageComponent, newColor);
+	}
+	public void UpdateOverlayTint(Color newColor)
+	{
+		_overlayTint = newColor;
+		overlayTint = newColor;
+		refs.UpdateImageTint(refs.overlayImageComponent, newColor);
+	}
+	public void UpdateBorderTint(Color newColor)
+	{
+		_borderTint = newColor;
+		borderTint = newColor;
+		refs.UpdateImageTint(refs.borderImageComponent, newColor);
+	}
+
 
 
 	#if UNITY_EDITOR
 	private void OnValidate()
 	{
-		if (_categoryText != categoryText  || _winnerText != winnerText  ||  _background != background)
+		if (_categoryText != categoryText
+		||  _winnerText != winnerText
+		)
 		{
 			UpdateCategory(categoryText);
 			UpdateWinner(winnerText);
+		}
+
+		if (_background != background
+		||  _overlay != overlay
+		||  _border != border
+		)
+		{
 			UpdateBackground(background);
+			UpdateOverlay(overlay);
+			UpdateBorder(border);
+		}
+
+		if (_backgroundTint != backgroundTint
+		||  _overlayTint != overlayTint
+		||  _borderTint != borderTint
+		)
+		{
+			UpdateBackgroundTint(backgroundTint);
+			UpdateOverlayTint(overlayTint);
+			UpdateBorderTint(borderTint);
 		}
 	}
 	#endif
